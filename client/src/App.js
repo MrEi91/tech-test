@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       dataFromApiQlue: [],
       dataFromApiWaze: [],
-      buttonActive: true
+      buttonActive: 'all'
     }
   }
 
@@ -34,8 +34,8 @@ class App extends Component {
     return (
       <div className="App">
         <div style={{ flexDirection: 'row', align: 'center', marginBottom: 7 }}>
-          <input type='button' style={ styles.buttonWaze } value='Waze' onClick={() => this.setState({ buttonActive: true })}  />
-          <input type='button' style={ styles.buttonQlue } value='Qlue'  onClick={() => this.setState({ buttonActive: false })} />
+          <input type='button' style={ styles.buttonWaze } value='Waze' onClick={() => this.setState({ buttonActive: 'waze' })}  />
+          <input type='button' style={ styles.buttonQlue } value='Qlue'  onClick={() => this.setState({ buttonActive: 'qlue' })} />
         </div>
         <Map center={position} zoom={12}>
           <TileLayer
@@ -43,7 +43,13 @@ class App extends Component {
             attribution='&copy; <a href="#">Eri Irawan</a>'
           />
             {
-              this.state.buttonActive === true ? <FromApiWaze holdChange={ this.state.dataFromApiWaze } /> : <FromApiQlue handleChange={ this.state.dataFromApiQlue } />
+              this.state.buttonActive === 'all' && <div> <FromApiWaze holdChange={ this.state.dataFromApiWaze } /> <FromApiQlue handleChange={ this.state.dataFromApiQlue } /> </div>
+            }
+            {
+              this.state.buttonActive === 'waze' && <FromApiWaze holdChange={ this.state.dataFromApiWaze } />
+            }
+            {
+              this.state.buttonActive === 'qlue' && <FromApiQlue handleChange={ this.state.dataFromApiQlue } />
             }
         </Map>
       </div>
