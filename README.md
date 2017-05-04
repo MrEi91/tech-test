@@ -2,18 +2,18 @@
 
 #### USAGE
 ```
-git clone git@github.com:MrEi91/tech-test.git
+$ git clone git@github.com:MrEi91/tech-test.git
 ```
 Change directory to server-side
 ```
-npm install or npm i
-npm run dev
+$ npm install or npm i
+$ npm run dev
 ```
 
 And then open new tab on terminal, change directory to client-side
 ```
-npm install or npm i
-npm start
+$ npm install or npm i
+$ npm start
 ```
 
 If you find this on terminal (directory client-side), then choose yes or Y.
